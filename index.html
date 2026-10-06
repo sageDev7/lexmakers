@@ -48,8 +48,11 @@
   ]
 }
 </script>
+<script>try{var t=localStorage.getItem('lm-tema');if(t&&t!=='azul')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
+<div class="splash" aria-hidden="true"><img src="logo.png" alt="" class="splash-logo"><div class="splash-bar"><span></span></div></div>
+<script>document.documentElement.classList.add('splash-lock');setTimeout(function(){document.documentElement.classList.remove('splash-lock')},matchMedia('(prefers-reduced-motion: reduce)').matches?450:2800);</script>
 
 <div class="burger" id="burger" role="button" tabindex="0" aria-label="Abrir menú" aria-expanded="false">
   <span></span><span></span><span></span>
@@ -65,6 +68,11 @@
     <a href="#testimonios">Testimonios</a>
     <a href="#nosotros">Quiénes somos</a>
     <a href="#contacto">Contacto</a>
+    <div class="theme-switch" role="group" aria-label="Versión de color">
+      <button type="button" data-theme-set="azul" aria-pressed="true">Azul</button>
+      <button type="button" data-theme-set="violeta" aria-pressed="false">Violeta</button>
+      <button type="button" data-theme-set="verde" aria-pressed="false">Verde</button>
+    </div>
   </div>
   <a href="https://wa.me/5492617783659?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn btn-primary">Escribinos</a>
 </nav>
@@ -78,6 +86,11 @@
       <a href="#testimonios">Testimonios</a>
       <a href="#nosotros">Quiénes somos</a>
       <a href="#contacto">Contacto</a>
+      <div class="theme-switch" role="group" aria-label="Versión de color">
+        <button type="button" data-theme-set="azul" aria-pressed="true">Azul</button>
+        <button type="button" data-theme-set="violeta" aria-pressed="false">Violeta</button>
+        <button type="button" data-theme-set="verde" aria-pressed="false">Verde</button>
+      </div>
     </nav>
     <a href="https://wa.me/5492617783659?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn btn-primary btn-header">Escribinos</a>
   </div>

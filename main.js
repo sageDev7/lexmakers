@@ -77,6 +77,26 @@
   }
 })();
 
+// Selector provisorio de versión de color (azul / violeta / verde)
+(function () {
+  var buttons = document.querySelectorAll('[data-theme-set]');
+  if (!buttons.length) return;
+  function setTheme(name) {
+    if (name === 'azul') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', name);
+    try { localStorage.setItem('lm-tema', name); } catch (e) {}
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === name));
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme-set')); });
+  });
+  var current = 'azul';
+  try { current = localStorage.getItem('lm-tema') || 'azul'; } catch (e) {}
+  setTheme(current);
+})();
+
 // Formulario de contacto -> FormSubmit.co
 (function () {
   var form = document.getElementById('contactForm');
