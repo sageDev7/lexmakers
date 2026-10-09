@@ -48,7 +48,6 @@
   ]
 }
 </script>
-<script>try{var t=localStorage.getItem('lm-tema');if(t&&t!=='azul')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 </head>
 <body>
 <div class="splash" aria-hidden="true"><img src="logo.png" alt="" class="splash-logo"><div class="splash-bar"><span></span></div></div>
@@ -68,11 +67,6 @@
     <a href="#testimonios">Testimonios</a>
     <a href="#nosotros">Quiénes somos</a>
     <a href="#contacto">Contacto</a>
-    <div class="theme-switch" role="group" aria-label="Versión de color">
-      <button type="button" data-theme-set="azul" aria-pressed="true">Azul</button>
-      <button type="button" data-theme-set="violeta" aria-pressed="false">Violeta</button>
-      <button type="button" data-theme-set="verde" aria-pressed="false">Verde</button>
-    </div>
   </div>
   <a href="https://wa.me/5492617783659?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn btn-primary">Escribinos</a>
 </nav>
@@ -86,11 +80,6 @@
       <a href="#testimonios">Testimonios</a>
       <a href="#nosotros">Quiénes somos</a>
       <a href="#contacto">Contacto</a>
-      <div class="theme-switch" role="group" aria-label="Versión de color">
-        <button type="button" data-theme-set="azul" aria-pressed="true">Azul</button>
-        <button type="button" data-theme-set="violeta" aria-pressed="false">Violeta</button>
-        <button type="button" data-theme-set="verde" aria-pressed="false">Verde</button>
-      </div>
     </nav>
     <a href="https://wa.me/5492617783659?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" class="btn btn-primary btn-header">Escribinos</a>
   </div>
@@ -100,11 +89,14 @@
 
   <section id="top" class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <img src="tech-bg.jpg" alt="">
+      <video id="heroVideo" autoplay muted loop playsinline poster="tech-bg.jpg">
+        <source src="hero-silver-opt.mp4" type="video/mp4">
+      </video>
       <div class="hero-tint"></div>
     </div>
     <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-inner">
+      <img src="logo.png" alt="Lex Makers" class="hero-logo">
       <span class="eyebrow eyebrow-light">Lex Makers · Grupo Jurídico</span>
       <h1>El derecho que<span class="lt">evoluciona.</span></h1>
       <p class="hero-second">La seguridad que necesitás.</p>
@@ -310,6 +302,32 @@
           width="100%" height="100%" style="border:0" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade" title="Ubicación — Mendoza, Argentina"></iframe>
       </div>
+    </div>
+  </section>
+
+  <section id="newsletter" class="section section-dark">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-light">Newsletter</span>
+        <h2>Novedades legales,<span class="lt">directo a tu email.</span></h2>
+        <p class="section-sub">Un envío con cambios normativos y novedades de LegalTech que te sirven para tu negocio. Sin spam.</p>
+      </div>
+
+      <!--
+        CONFIGURAR: reemplazar {ACCOUNT_ID} y {FORM_ID} por los de tu cuenta de MailerLite
+        (gratis hasta 1.000 suscriptores). Guía: MailerLite > Forms > crear "Embedded form" >
+        pestaña "HTML" > copiar esos dos números de la URL del action.
+      -->
+      <form class="newsletter-form" id="newsletterForm"
+            action="https://assets.mailerlite.com/jsonp/{ACCOUNT_ID}/forms/{FORM_ID}/subscribe"
+            method="post" target="ml-newsletter-target">
+        <label for="nl-email" class="sr-only">Email</label>
+        <input type="email" id="nl-email" name="fields[email]" placeholder="tu@email.com" required>
+        <input type="hidden" name="ml-submit" value="1">
+        <button type="submit" class="btn btn-gradient">Suscribirme</button>
+      </form>
+      <p class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite" hidden>¡Listo! Revisá tu email para confirmar la suscripción.</p>
+      <iframe name="ml-newsletter-target" class="newsletter-target-frame" aria-hidden="true" tabindex="-1"></iframe>
     </div>
   </section>
 

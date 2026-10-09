@@ -77,24 +77,27 @@
   }
 })();
 
-// Selector provisorio de versión de color (azul / violeta / verde)
+// Video del hero -> se detiene si el usuario pidió "reducir movimiento"
 (function () {
-  var buttons = document.querySelectorAll('[data-theme-set]');
-  if (!buttons.length) return;
-  function setTheme(name) {
-    if (name === 'azul') document.documentElement.removeAttribute('data-theme');
-    else document.documentElement.setAttribute('data-theme', name);
-    try { localStorage.setItem('lm-tema', name); } catch (e) {}
-    buttons.forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === name));
-    });
+  var video = document.getElementById('heroVideo');
+  if (!video) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    video.pause();
   }
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme-set')); });
+})();
+
+// Newsletter -> envía a MailerLite vía iframe oculto; confirmación optimista (no se puede leer la respuesta cross-origin)
+(function () {
+  var form = document.getElementById('newsletterForm');
+  var status = document.getElementById('newsletterStatus');
+  if (!form || !status) return;
+  form.addEventListener('submit', function () {
+    setTimeout(function () {
+      status.hidden = false;
+      form.reset();
+    }, 600);
   });
-  var current = 'azul';
-  try { current = localStorage.getItem('lm-tema') || 'azul'; } catch (e) {}
-  setTheme(current);
 })();
 
 // Formulario de contacto -> FormSubmit.co
