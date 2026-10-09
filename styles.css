@@ -269,7 +269,7 @@ a.contacto-item:hover { color: var(--accent-2); }
 .mapa-strip { width: 100%; height: 320px; border-radius: 0; overflow: hidden; line-height: 0; margin-top: 56px; }
 
 /* ===== Newsletter ===== */
-.newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 36px auto 0; flex-wrap: wrap; justify-content: center; }
+.newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
 .newsletter-form input[type="email"] {
   flex: 1 1 220px; padding: 14px 20px; border-radius: 0; border: 1px solid rgba(255,255,255,.25);
   background: rgba(255,255,255,.06); color: #fff; font-family: var(--font-body); font-size: .95rem;
@@ -281,8 +281,9 @@ a.contacto-item:hover { color: var(--accent-2); }
 .newsletter-status { margin: 14px auto 0; max-width: 480px; text-align: center; font-size: .9rem; color: #86EFAC; }
 .newsletter-target-frame { display: none; }
 @media (max-width: 480px) {
-  .newsletter-form { flex-direction: column; }
-  .newsletter-form .btn { width: 100%; }
+  .newsletter-form { flex-direction: column; align-items: stretch; }
+  .newsletter-form input[type="email"] { flex: none; box-sizing: border-box; width: 100%; }
+  #newsletter .newsletter-form .btn { flex: none; box-sizing: border-box; width: 100%; max-width: none; }
 }
 .mapa-strip iframe { filter: grayscale(.3) hue-rotate(180deg) saturate(1.3) contrast(.95) brightness(1.02); }
 
