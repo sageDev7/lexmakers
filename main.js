@@ -77,14 +77,89 @@
   }
 })();
 
-// Video del hero -> se detiene si el usuario pidió "reducir movimiento"
+// Video del hero -> variante anterior con ?hero=1; se detiene si el usuario pidió "reducir movimiento"
 (function () {
   var video = document.getElementById('heroVideo');
   if (!video) return;
+  if (/[?&]hero=1(&|$)/.test(location.search)) {
+    video.poster = 'tech-bg.jpg';
+    video.querySelector('source').src = 'hero-silver-opt.mp4';
+    video.load();
+  }
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     video.removeAttribute('autoplay');
     video.pause();
   }
+})();
+
+// Videos de fondo de secciones: se cargan al acercarse y solo se reproducen mientras están en pantalla
+(function () {
+  var vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) v.src = v.dataset.src;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+
+// Galería del estudio -> lightbox con flechas, teclado y swipe
+(function () {
+  var items = document.querySelectorAll('.g-item');
+  var lb = document.getElementById('lightbox');
+  if (!items.length || !lb) return;
+  var img = lb.querySelector('.lb-img');
+  var count = lb.querySelector('.lb-count');
+  var closeBtn = lb.querySelector('.lb-close');
+  var idx = 0, last = null, x0 = null;
+
+  function show(i) {
+    idx = (i + items.length) % items.length;
+    var src = items[idx].querySelector('img');
+    img.src = src.src;
+    img.alt = src.alt;
+    count.textContent = (idx + 1) + ' / ' + items.length;
+  }
+  function open(i) {
+    last = document.activeElement;
+    show(i);
+    lb.hidden = false;
+    document.documentElement.classList.add('lb-open');
+    closeBtn.focus();
+  }
+  function close() {
+    lb.hidden = true;
+    document.documentElement.classList.remove('lb-open');
+    if (last) last.focus();
+  }
+
+  items.forEach(function (b, i) { b.addEventListener('click', function () { open(i); }); });
+  closeBtn.addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
+  lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
 })();
 
 // Newsletter -> envía a MailerLite vía iframe oculto; confirmación optimista (no se puede leer la respuesta cross-origin)
