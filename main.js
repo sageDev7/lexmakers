@@ -112,56 +112,6 @@
   vids.forEach(function (v) { io.observe(v); });
 })();
 
-// Galería del estudio -> lightbox con flechas, teclado y swipe
-(function () {
-  var items = document.querySelectorAll('.g-item');
-  var lb = document.getElementById('lightbox');
-  if (!items.length || !lb) return;
-  var img = lb.querySelector('.lb-img');
-  var count = lb.querySelector('.lb-count');
-  var closeBtn = lb.querySelector('.lb-close');
-  var idx = 0, last = null, x0 = null;
-
-  function show(i) {
-    idx = (i + items.length) % items.length;
-    var src = items[idx].querySelector('img');
-    img.src = src.src;
-    img.alt = src.alt;
-    count.textContent = (idx + 1) + ' / ' + items.length;
-  }
-  function open(i) {
-    last = document.activeElement;
-    show(i);
-    lb.hidden = false;
-    document.documentElement.classList.add('lb-open');
-    closeBtn.focus();
-  }
-  function close() {
-    lb.hidden = true;
-    document.documentElement.classList.remove('lb-open');
-    if (last) last.focus();
-  }
-
-  items.forEach(function (b, i) { b.addEventListener('click', function () { open(i); }); });
-  closeBtn.addEventListener('click', close);
-  lb.querySelector('.lb-prev').addEventListener('click', function () { show(idx - 1); });
-  lb.querySelector('.lb-next').addEventListener('click', function () { show(idx + 1); });
-  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-  document.addEventListener('keydown', function (e) {
-    if (lb.hidden) return;
-    if (e.key === 'Escape') close();
-    else if (e.key === 'ArrowLeft') show(idx - 1);
-    else if (e.key === 'ArrowRight') show(idx + 1);
-  });
-  lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener('touchend', function (e) {
-    if (x0 === null) return;
-    var dx = e.changedTouches[0].clientX - x0;
-    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
-    x0 = null;
-  });
-})();
-
 // Newsletter -> envía a MailerLite vía iframe oculto; confirmación optimista (no se puede leer la respuesta cross-origin)
 (function () {
   var form = document.getElementById('newsletterForm');

@@ -1,0 +1,53 @@
+/* Versión verde esmeralda: el de las sillas de terciopelo que mandó la clienta (#0E4440 base, tono ~175°)
+   con el verde como acento principal y cobre/naranja «Adobe» solo de contrapunto (eyebrows y comillas). Se carga después de styles.css. */
+:root {
+  --ink: #0E4440;
+  --ink-deep: #082C2A;
+  --ink-elevated: #155650;
+  --accent-1: #17695F;
+  --accent-2: #5DB3A6;
+  --accent-rgb: 23,105,95;
+  --copper: #A4501F;
+  --copper-light: #E0884A;
+  --mist: #E7F0EE;
+  --muted: #4B6662;
+  --line: #D2E2DF;
+  --gradient: linear-gradient(135deg, #0F4F48, #1E7F72);
+}
+
+.section-dark .eyebrow:not(.eyebrow-light) { color: #91B8B1; }
+.testi-card { background: rgba(21,86,80,.6); }
+.contacto-form-min { background: #DAE8E5; }
+.form-row-min input, .form-row-min textarea { border-bottom-color: rgba(14,68,64,.2); }
+.mapa-strip iframe { filter: grayscale(.75) contrast(.95); }
+
+/* Cobre solo como contrapunto: eyebrows y comillas */
+.eyebrow { color: var(--copper); }
+.eyebrow-light, .contacto-info .eyebrow, .contacto-info .eyebrow-light, .area-panel-dark .eyebrow-light { color: var(--copper-light); }
+.testi-card i, .nosotros-quote i { color: var(--copper-light); }
+
+/* Fondos animados en petróleo, con un hilo de cobre */
+.fx-aurora::before {
+  background: linear-gradient(115deg, transparent 28%, rgba(21,86,80,.08) 40%, rgba(30,127,114,.1) 50%, rgba(21,86,80,.08) 60%, transparent 72%);
+}
+.fx-aurora::after {
+  background-image: linear-gradient(rgba(14,68,64,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(14,68,64,.06) 1px, transparent 1px);
+}
+.fx-grid::after {
+  background: linear-gradient(115deg, transparent 30%, rgba(30,127,114,.16) 42%, rgba(93,179,166,.2) 50%, rgba(30,127,114,.16) 58%, transparent 70%);
+}
+
+/* Videos de fondo: se pasan a gris y se tiñen de petróleo para que no queden azules */
+.sec-video video { filter: grayscale(1) brightness(1.05); }
+.sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(14,68,64,.84) 0%, rgba(14,68,64,.6) 70%, rgba(14,68,64,.42) 100%); }
+.social-tint { background: linear-gradient(100deg, rgba(8,44,42,.86) 10%, rgba(8,44,42,.6) 60%, rgba(30,127,114,.35) 100%); }
+
+/* Destacados de títulos sobre petróleo: verde más claro para que no se pierdan */
+#top.hero h1 .lt, .section-dark h2 .lt, .area-panel-dark h2 .lt { background: linear-gradient(135deg, #5DB3A6, #9FD6CC); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.area-panel-dark .area-row i { color: #7CC2B6; }
+#top.hero .eyebrow { color: #7CC2B6; }
+
+/* Verde casi negro en los marcos de la página: navbar, menú mobile, footer y newsletter (la sección que lo precede) */
+.site-header.scrolled, body.inner-page .site-header, #mnav, .site-footer { background: #031917; }
+#newsletter { background: #052220; }
+#newsletter .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(5,34,32,.88) 0%, rgba(5,34,32,.66) 70%, rgba(5,34,32,.5) 100%); }
