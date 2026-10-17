@@ -45,7 +45,7 @@
 /* Destacados de títulos sobre petróleo: verde más claro para que no se pierdan */
 #top.hero h1 .lt, .section-dark h2 .lt, .area-panel-dark h2 .lt { background: linear-gradient(135deg, #3AAFAF, #8FD6D6); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .area-panel-dark .area-row i { color: #6FC4C4; }
-#top.hero .eyebrow { color: #6FC4C4; }
+#top.hero .eyebrow { color: var(--copper-light); }
 
 /* Verde casi negro en los marcos de la página: navbar, menú mobile, footer y newsletter (la sección que lo precede) */
 .site-header.scrolled, body.inner-page .site-header, #mnav, .site-footer { background: #002424; }

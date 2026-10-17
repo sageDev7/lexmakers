@@ -43,7 +43,7 @@
 
 #top.hero h1 .lt, .section-dark h2 .lt, .area-panel-dark h2 .lt { background: linear-gradient(135deg, #5FA8B8, #A3CFD9); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .area-panel-dark .area-row i { color: #7BB8C6; }
-#top.hero .eyebrow { color: #7BB8C6; }
+#top.hero .eyebrow { color: var(--copper-light); }
 
 .site-header.scrolled, body.inner-page .site-header, #mnav, .site-footer { background: #072430; }
 #newsletter { background: #072430; }

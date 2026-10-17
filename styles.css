@@ -53,7 +53,7 @@ h1 .lt, h2 .lt, h3 .lt {
 .section-head { text-align: center; max-width: 640px; margin: 0 auto 60px; }
 .section-head h2 { font-size: clamp(2.3rem, 4.4vw, 3.2rem); margin-top: 14px; }
 .eyebrow {
-  display: inline-block; font-family: var(--font-body); font-size: .8rem; font-weight: 700;
+  display: inline-block; font-family: var(--font-body); font-size: .9rem; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase; color: var(--accent-1); margin-bottom: 16px;
 }
 .eyebrow-light { color: var(--accent-2); }
@@ -94,7 +94,7 @@ body.inner-page .site-header { background: var(--ink-deep); box-shadow: 0 4px 20
 .wordmark-logo { height: 30px; width: auto; flex-shrink: 0; }
 .footer-brand .wordmark { color: #fff; justify-content: flex-start; }
 .desk-nav { display: flex; align-items: center; gap: 28px; }
-.desk-nav a { font-size: .88rem; font-weight: 600; color: rgba(255,255,255,.75); transition: color .2s ease; }
+.desk-nav a { font-size: .96rem; font-weight: 600; color: rgba(255,255,255,.75); transition: color .2s ease; }
 .desk-nav a:hover { color: #fff; }
 
 /* ===== Menú mobile ===== */
@@ -374,6 +374,14 @@ body.inner-page .top-float, body.inner-page .wa-float { opacity: 1; visibility: 
   .nosotros-grid { grid-template-columns: 1fr; }
   .nosotros-quote { order: -1; }
   .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* Navbar: con los links más grandes no entran por debajo de ~1080px → menú hamburguesa */
+@media (max-width: 1080px) {
+  .desk-nav, .site-header .btn-header { display: none; }
+  .burger { display: flex; }
+  .h-inner { justify-content: center; position: relative; }
+  .h-inner .wordmark { position: absolute; left: 50%; transform: translateX(-50%); }
 }
 
 @media (max-width: 768px) {

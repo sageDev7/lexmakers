@@ -1,0 +1,10 @@
+/* Versión 3: el primer verde (tema-verde.css, hex de la clienta) con el bordó de la versión azulada como contrapunto.
+   Se carga después de tema-verde.css y solo cambia el contrapunto.
+   TEMPORAL: la activa selector-version.js; borrar junto con él cuando elijan versión. */
+:root {
+  --copper: #6E1F2F;
+  --copper-light: #C46B7B;
+}
+.nosotros-quote { background: #4A1420; }
+.nosotros-quote i { color: #D88F9C; }
+.social-tint { background: linear-gradient(100deg, rgba(0,36,36,.86) 10%, rgba(0,36,36,.6) 60%, rgba(110,31,47,.4) 100%); }
