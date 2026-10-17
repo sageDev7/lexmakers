@@ -1,0 +1,50 @@
+/* Versión Pantone azulado (19-4914 Deep Teal como se ve en las fotos de ropa de la clienta, ≈#104362)
+   con bordó oscuro de contrapunto. Se carga después de tema-verde.css y pisa las mismas reglas.
+   TEMPORAL: la activa selector-version.js; borrar junto con él cuando elijan versión. */
+:root {
+  --ink: #124556;
+  --ink-deep: #0B2F3B;
+  --ink-elevated: #1A5668;
+  --accent-1: #1C6478;
+  --accent-2: #5FA8B8;
+  --accent-rgb: 28,100,120;
+  --copper: #6E1F2F;
+  --copper-light: #C46B7B;
+  --mist: #E8EFF1;
+  --muted: #4C6670;
+  --line: #D3E0E4;
+  --gradient: linear-gradient(135deg, #134A5C, #2A7A8C);
+}
+
+.section-dark .eyebrow:not(.eyebrow-light) { color: #93B3BD; }
+.testi-card { background: rgba(26,86,104,.6); }
+.contacto-form-min { background: #DCE7EA; }
+.form-row-min input, .form-row-min textarea { border-bottom-color: rgba(18,69,86,.2); }
+
+/* Bordó como contrapunto: eyebrows, comillas y la cita de «Quiénes somos» */
+.eyebrow { color: var(--copper); }
+.eyebrow-light, .contacto-info .eyebrow, .contacto-info .eyebrow-light, .area-panel-dark .eyebrow-light { color: var(--copper-light); }
+.testi-card i { color: var(--copper-light); }
+.nosotros-quote { background: #4A1420; }
+.nosotros-quote i { color: #D88F9C; }
+
+.fx-aurora::before {
+  background: linear-gradient(115deg, transparent 28%, rgba(26,86,104,.08) 40%, rgba(42,122,140,.1) 50%, rgba(26,86,104,.08) 60%, transparent 72%);
+}
+.fx-aurora::after {
+  background-image: linear-gradient(rgba(18,69,86,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(18,69,86,.06) 1px, transparent 1px);
+}
+.fx-grid::after {
+  background: linear-gradient(115deg, transparent 30%, rgba(42,122,140,.16) 42%, rgba(95,168,184,.2) 50%, rgba(42,122,140,.16) 58%, transparent 70%);
+}
+
+.sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(18,69,86,.84) 0%, rgba(18,69,86,.6) 70%, rgba(18,69,86,.42) 100%); }
+.social-tint { background: linear-gradient(100deg, rgba(11,47,59,.86) 10%, rgba(11,47,59,.6) 60%, rgba(110,31,47,.4) 100%); }
+
+#top.hero h1 .lt, .section-dark h2 .lt, .area-panel-dark h2 .lt { background: linear-gradient(135deg, #5FA8B8, #A3CFD9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.area-panel-dark .area-row i { color: #7BB8C6; }
+#top.hero .eyebrow { color: #7BB8C6; }
+
+.site-header.scrolled, body.inner-page .site-header, #mnav, .site-footer { background: #072430; }
+#newsletter { background: #072430; }
+#newsletter .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(7,36,48,.88) 0%, rgba(7,36,48,.66) 70%, rgba(7,36,48,.5) 100%); }
