@@ -1,5 +1,5 @@
-/* Versión verde: hex que pasó la clienta, literales — #003636 base, #004A4A tarjetas, #002424 navbar/footer/newsletter (derivados #006060 y #007C7C de la misma carta)
-   con el verde como acento principal y cobre/naranja «Adobe» solo de contrapunto (eyebrows y comillas). Se carga después de styles.css. */
+/* Versión verde: hex que pasó la clienta, literales — #003636 base, #004A4A tarjetas, #002424 navbar/footer (derivados #006060 y #007C7C de la misma carta)
+   con el verde como acento principal y bordó de contrapunto. Colores por sección elegidos por la clienta el 19/10 (ver final). Se carga después de styles.css. */
 :root {
   --ink: #003636;
   --ink-deep: #002424;
@@ -7,8 +7,8 @@
   --accent-1: #006060;
   --accent-2: #3AAFAF;
   --accent-rgb: 0,96,96;
-  --copper: #A4501F;
-  --copper-light: #E0884A;
+  --copper: #6E1F2F;
+  --copper-light: #C46B7B;
   --mist: #E4F4F4;
   --muted: #4A6464;
   --line: #D0E4E4;
@@ -21,7 +21,7 @@
 .form-row-min input, .form-row-min textarea { border-bottom-color: rgba(0,54,54,.2); }
 .mapa-strip iframe { filter: grayscale(.75) contrast(.95); }
 
-/* Cobre solo como contrapunto: eyebrows y comillas */
+/* Bordó como contrapunto: eyebrows, comillas, cita y franja de Instagram */
 .eyebrow { color: var(--copper); }
 .eyebrow-light, .contacto-info .eyebrow, .contacto-info .eyebrow-light, .area-panel-dark .eyebrow-light { color: var(--copper-light); }
 .testi-card i, .nosotros-quote i { color: var(--copper-light); }
@@ -40,14 +40,33 @@
 /* Videos de fondo: se pasan a gris y se tiñen de petróleo para que no queden azules */
 .sec-video video { filter: grayscale(1) brightness(1.05); }
 .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(0,54,54,.84) 0%, rgba(0,54,54,.6) 70%, rgba(0,54,54,.42) 100%); }
-.social-tint { background: linear-gradient(100deg, rgba(0,36,36,.86) 10%, rgba(0,36,36,.6) 60%, rgba(0,124,124,.35) 100%); }
+.social-tint { background: linear-gradient(100deg, rgba(0,36,36,.86) 10%, rgba(0,36,36,.6) 60%, rgba(110,31,47,.4) 100%); }
 
 /* Destacados de títulos sobre petróleo: verde más claro para que no se pierdan */
 #top.hero h1 .lt, .section-dark h2 .lt, .area-panel-dark h2 .lt { background: linear-gradient(135deg, #3AAFAF, #8FD6D6); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .area-panel-dark .area-row i { color: #6FC4C4; }
 #top.hero .eyebrow { color: var(--copper-light); }
 
-/* Verde casi negro en los marcos de la página: navbar, menú mobile, footer y newsletter (la sección que lo precede) */
+/* Navbar, menú mobile y footer: verde profundo */
 .site-header.scrolled, body.inner-page .site-header, #mnav, .site-footer { background: #002424; }
-#newsletter { background: #002424; }
-#newsletter .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(0,36,36,.88) 0%, rgba(0,36,36,.66) 70%, rgba(0,36,36,.5) 100%); }
+
+/* Colores por sección elegidos por la clienta (19/10/2026) */
+.area-panel-dark { background: #004A4A; }
+.area-panel-light { background: #E4F4F4; }
+#testimonios { background: #072430; }
+#testimonios .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(7,36,48,.86) 0%, rgba(7,36,48,.62) 70%, rgba(7,36,48,.45) 100%); }
+#testimonios .testi-card { background: rgba(18,69,86,.55); }
+.nosotros-quote { background: #4A1420; }
+.nosotros-quote i { color: #D88F9C; }
+#newsletter { background: #4A1420; }
+#newsletter .sec-video-tint { background: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(74,20,32,.88) 0%, rgba(74,20,32,.64) 70%, rgba(74,20,32,.48) 100%); }
+#newsletter .section-sub { color: rgba(255,255,255,.78); }
+#newsletter .eyebrow-light { color: #E8A9B4; }
+
+/* Hero y splash en verde profundo (19/10): el negro del video se reemplaza por #002424
+   con mix-blend screen (negro → fondo, las líneas plateadas quedan plateadas) */
+#top.hero { background: #001A1A; }
+.hero-bg { background: radial-gradient(ellipse 80% 70% at 50% 45%, #002424 0%, #001414 75%); }
+.hero-bg video { mix-blend-mode: screen; opacity: .85; }
+.hero-tint { background: radial-gradient(ellipse 65% 60% at 50% 48%, rgba(0,20,20,.78) 0%, rgba(0,20,20,.5) 55%, rgba(0,20,20,.2) 100%); }
+.splash { background: radial-gradient(ellipse 80% 70% at 50% 45%, #002424 0%, #001414 75%); }
